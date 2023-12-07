@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+</head>
+<body>
+    <h1>Admin Home</h1>
+    <ul>
+        <li><a href="{% url 'add_room' %}">Add Room</a></li>
+        <li><a href="{% url 'admin_room_list' %}">Room List</a></li>
+        <li><a href="{% url 'admin_book_applications' %}">Booking Applications</a></li>
+    </ul>
+</body>
+</html>

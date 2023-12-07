@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Room List</title>
+</head>
+<body>
+    <h1>All Rooms</h1>
+    <ul>
+        {% for room in rooms %}
+            <li>
+                {{ room.room_type }} Room
+                {% if room.is_reserved %}
+                    (Reserved)
+                {% endif %}
+
+                <a href="{% if room.booking %}{% url 'admin_booking_detail' room.booking.slug %}{% endif %}">Booking Details</a>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Booking Detail</title>
+</head>
+<body>
+    <h1>Booking Details</h1>
+    <p>Client: {{ booking.client.full_name }}</p>
+    <p>Email: {{ booking.client.email }}</p>
+    <p>Room Type: {{ booking.room.room_type }}</p>
+    <p>Check-in Date: {{ booking.check_in_date }}</p>
+    <p>Check-out Date: {{ booking.check_out_date }}</p>
+    <p>Additional Services: {{ booking.additional_services }}</p>
+    {% if booking.is_approved %}
+        <p style="color: green;">Status: Approved</p>
+    {% else %}
+        <p style="color: red;">Status: Pending Approval</p>
+    {% endif %}
+    <form method="post" action="{% if booking.slug %}{% url 'admin_booking_detail' booking.slug %}{% endif %}">
+    {% csrf_token %}
+    <button type="submit" name="action" value="approve">Approve</button>
+    <button type="submit" name="action" value="reject">Reject</button>
+    </form>
+</body>
+</html>

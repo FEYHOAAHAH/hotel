@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Booking Applications</title>
+</head>
+<body>
+    <h1>Booking Applications</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                {% if booking.slug %}
+                    <a href="{% url 'admin_booking_detail' booking.slug %}">
+                        {{ booking.client.full_name }} - {{ booking.room.room_type }} Room
+                    </a>
+                {% else %}
+                    {{ booking.client.full_name }} - {{ booking.room.room_type }} Room (No Details Available)
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ room.room_type }} Room</title>
+</head>
+<body>
+    <h1>{{ room.room_type }} Room Details</h1>
+    <p>{{ room.details }}</p>
+    <form method="post" action="{% url 'book_room' room.id %}">
+        {% csrf_token %}
+        <button type="submit">Book This Room</button>
+    </form>
+</body>
+</html>
